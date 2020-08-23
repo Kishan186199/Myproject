@@ -1,0 +1,48 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="{% static "css/home1.css" %}">
+  <link rel="stylesheet" href="{% static "css/slicknav.css" %}">
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      {% load static %}
+   background-image: url('{% static 'images/KIT.jpg' %}');
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner-area">
+    <header>
+        <a href='#' class="logo">STC SYSTEM</a>
+        <ul class="menu">
+          <li><a href="/Stu_login/">Student</a></li>
+          <li><a href="/Tech_login/">Teacher</a></li>
+          <li><a href="/admin/">Admin</a></li>
+        </ul>
+    </header>
+    <div class="banner-text">
+      <h2>Student Teacher Concilliator</h2>
+      <p>An Interface between the students and teachers</p>
+      <a href='/contact_us/'>Contact us</a>
+      <a href='/about_us/'>About us</a>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+  <script src="{% static "js/jquery.slicknav.js" %}"></script>
+  <script>
+  $('.menu').slicknav({
+    'appendTo' : 'header',
+    'label' : ''
+  });
+  </script>
+</body>
+</html>

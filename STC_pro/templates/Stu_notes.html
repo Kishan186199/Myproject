@@ -1,0 +1,32 @@
+<!doctype html>
+{% extends 'Stu_dashboard.html'%}
+{% load staticfiles %}
+<html>
+<head>
+  {% block xy %}
+  <title>Notes</title>
+  <style>
+    body{
+      background-color:lightskyblue;
+    }
+  </style>
+  {% endblock %}
+</head>
+<body>
+{% block xyz %}
+{% if notes %}
+<center>
+  <br><br><br>
+<h1> You Send the below Notes for the {{sb}} Students</h1><br>
+  {% for i in notes %}
+  <fieldset style="text-align:left; height:150px;width:700px;">
+    <legend><h2>{{i.title}}</h2></legend>
+      <h4 style=" color: red;text-align:right;text-align:center;">{{i.Notes}}</h4>
+      <button style="background-color:navy;"><a href={{i.Notes}} download style='color:white;text-decoration:none;'>Download</a></button>
+  </fieldset>
+  {% endfor %}
+{% endif %}
+</center>
+{% endblock %}
+</body>
+</html>

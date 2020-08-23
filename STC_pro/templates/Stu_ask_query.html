@@ -1,0 +1,55 @@
+<!doctype html>
+{% extends 'Stu_dashboard.html'%}
+{% load staticfiles %}
+<html>
+<head>
+  {% block xy %}
+  <title>Ask query</title>
+  <link rel="stylesheet" href="{% static "css/Tech_notification.css"%}">
+  <style>
+    body{
+      background-color:lightskyblue;
+    }
+  </style>
+  {% endblock %}
+</head>
+<body>
+  {% block xyz %}
+  <div class="login-page">
+    <br>
+    <center><h1 style ="font-size: 36px;font-family: "Roboto", sans-serif;">Ask Question from Teacher</h1></center>
+  <div class="form">
+    <form class="login-form" method="POST">
+      {% csrf_token %}
+      <textarea style="width: 350px;height:170px" name='question'></textarea>
+      <input  type="file"  value="Select File" name='que_img'></input>
+      <div class="K">
+      <input type="submit" value="SEND"/>
+      </div>
+    </form>
+  </div>
+</div>
+{% if questions %}
+<center>
+<fieldset style="width:950px;">
+<legend><h1> Some Question ask by {{sbj}} Students</h1></legend>
+  {% for i in questions %}
+    <h4 style="text-align:left;">Que({{i.id}}) - {{i.question}}</h4>
+    {% if i.img_que %}
+    <p style="text-align:right;"> <a href='{{i.img_que}}' style='text-decoration:none;' download>{{i.img_que}}<a></p>
+    {% endif %}
+    {% if i.answer %}
+      <h4 style="text-align:left;">Ans({{i.id}}) - {{i.answer}}</h4>
+    {% endif %}
+    {% if i.img_ans %}
+  <p style="text-align:right;"> <a href="{{i.img_ans}}" download>{{i.img_ans}}<a></p>
+    {% endif%}
+  {% endfor %}
+  <br><br>
+{% endif %}
+</fieldset>
+</center>
+<br><br>
+{% endblock %}
+</body>
+</html>

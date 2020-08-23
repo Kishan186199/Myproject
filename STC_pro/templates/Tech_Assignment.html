@@ -1,0 +1,61 @@
+<!doctype html>
+{% extends 'Tech_dashboard.html'%}
+{% load staticfiles %}
+		{% block xy %}
+		<link rel="stylesheet" href="{% static "fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"%}">
+		<link rel="stylesheet" href="{% static "css/Tech_Assignment.css" %}">
+    {% endblock %}
+
+    {% block xyz %}
+		<div class='top'>
+    <form action="" method="POST" style="background-color: lightskyblue;">
+			{% csrf_token %}
+    </br>
+  </br>
+</br></br>
+  <center><h1> Assignment Page</h1></center>
+		<div class="wrapper">
+			<div class="inner">
+        <div class="KI">
+					<textarea placeholder="Write Questions Here" style="width: 330px;height:370px;" name="assign"></textarea>
+          </div>
+        <div class="image-holder">
+          <div class="form-wrapper">
+          </br>
+            <input type="text" placeholder="Title of Assignment (eg: 1st Assignment)" class="form-control" name="title" required>
+            <i class="zmdi zmdi-number"></i>
+          </div>
+        </br>
+      </br></br>
+          <div class="form-group">
+						<input type="date"  class="form-control" name="last_date" required>
+						<input class="form-control" type="file"  value="Select File" name="assignment_img"></input>
+					</div>
+          <div class="sub"><input type="submit" value="Send"/>
+          </div>
+			</div>
+		</div>
+</form>
+</div>
+<div class='bottom' style="background-color: lightskyblue;">
+{% if Assignment %}
+<center>
+<h1> You Send the below Assignment for the {{sbj}} Students</h1></br>
+{% for i in Assignment %}
+<fieldset style="text-align:left; height:relative;width:700px;">
+	<legend  style="color:orangered;"><h2> [{{i.id}}.] {{i.title}} : </h2></legend>
+	<center>  <h3 style="color:navy;">Last date - {{i.submittion_date}}</h3></center><hr width='28%' align='center' color='black'>
+		<h4 style="text-align:center;">{{i.assignment}}</h4>
+		{% if i.assign_img %}
+			<h4 style="text-align:left;color:red;">{{i.assign_img}}</h4>
+			<button style="background-color:navy;align=right;"><a href={{i.assign_img}} download style='color:white;text-decoration:none;'>Download</a></button>
+		{% endif %}
+		<br>
+</fieldset>
+<br>
+{% endfor %}
+
+{% endif %}
+</center>
+</div>
+{% endblock %}

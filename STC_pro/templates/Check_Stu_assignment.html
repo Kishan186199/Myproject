@@ -1,0 +1,24 @@
+<!doctype html>
+{% extends 'Tech_evaluation.html'%}
+{% load staticfiles %}
+<html>
+<body style="background-color:lightskyblue;">
+{% block abcd %}
+{% if stu_assign %}
+<center><br>
+<h1>Assignment submitted by {{ roll }}</h1><hr>
+  {% for i in stu_assign %}
+  <fieldset style="text-align:center; height:relative; width:700px;">
+    <legend><h2 style="color:blue;">Assignment number {{i.assignment_no}}</h2></legend>
+      <h4 style="text-align:center;">{{i.answer}}</h4>
+      {% if i.ans_img %}
+      <button style=" color: white;background-color:navy;">Download Ans img</button>
+      {% endif%}
+  </fieldset>
+  {% endfor %}
+  </center>
+{% endif %}
+</center>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+{% extends 'Tech_dashboard.html'%}
+{% load staticfiles %}
+<html>
+<head>
+  {% block xy %}
+  <title>Notes</title>
+  <link rel="stylesheet" href="{% static "css/Tech_notification.css"%}">
+  <style>
+    body{
+      background-color:lightskyblue;
+    }
+  </style>
+  {% endblock %}
+</head>
+<body>
+  {% block xyz %}
+  <div class="login-page">
+  <center><h1 style ="font-size: 36px;font-family: "Roboto", sans-serif;">Notes For Students</h1></center>
+  <div class="form">
+    <form class="login-form" method="POST">
+      {% csrf_token %}
+      <input type="text" placeholder="Notes Title (eg: 1st unit/topics name etc.)" name="user"/>
+      <input  type="file"  value="Select File" name='note'></input>
+      <div class="K">
+      <input type="submit" value="SEND"/>
+      </div>
+    </form>
+  </div>
+</div>
+{% if notes %}
+<center>
+<h1> You Send the below Notes for the {{sbj}} Students</h1></br>
+  {% for i in notes %}
+  <fieldset style="text-align:left; height:150px;width:700px;">
+    <legend><h2>{{i.title}}</h2></legend>
+      <h4 style=" color: red;text-align:right;text-align:center;">{{i.Notes}}</h4>
+      <button style="background-color:navy;"><a href={{i.Notes}} download style='color:white;text-decoration:none;'>Download</a></button>
+  </fieldset><br>
+  {% endfor %}
+{% endif %}
+<br>
+</center>
+{% endblock %}
+</body>
+</html>

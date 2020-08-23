@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'Tech_dashboard.html'%}
+<html>
+  <head>
+    {% block xy %}
+    <title>Dashboard</title>
+    <style>
+    body{
+      background-color:lightblue;
+    }
+    </style>
+    {% endblock %}
+  </head>
+  <body>
+    {% block xyz %}
+    <br><br><br><br><br>  <br><br><br><br><br> <br><br><br><br><br>
+
+    <center><h1>Good {{msg}} {{user_name}}, Welcome to Dashboard</h1></center>
+  <center>  <h2 style="color:navy;">Today is {{today_date}}</h2> </center>
+
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+{% extends 'Tech_dashboard.html'%}
+{% load staticfiles %}
+<html>
+<head>
+  {% block xy %}
+  <title>Notification</title>
+  <link rel="stylesheet" href="{% static "css/Tech_notification.css"%}">
+  <style>
+    body{
+      background-color:lightskyblue;
+    }
+  </style>
+  {% endblock %}
+</head>
+<body>
+  {% block xyz %}
+  <div class="login-page">
+    <center><h1 style ="font-size: 36px;font-family: "Roboto", sans-serif;">Notification For {{ sbj }} Students</h1></center>
+  <div class="form">
+    <form class="login-form" method="POST">
+      {% csrf_token %}
+      <textarea style="width: 350px;height:170px" name='notification'></textarea>
+      <div class="K">
+      <input type="submit" value="SEND"/>
+      </div>
+    </form>
+  </div>
+</div>
+<center>
+{% if notifications %}
+<fieldset style="text-align:center;width:950px;">
+<legend><h1> You Send the below Notifications to the {{sbj}} Students</h1></legend>
+  <table>
+  {% for i in notifications %}
+    <tr>
+      <td style="padding:15px;text-align:left;"><b>==></b></td>
+      <td style=" color: red;text-align:left;">&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp &nbsp{{i.Notification}}</td>
+    </tr>
+  {% endfor %}
+    </table>
+{% endif %}
+</fieldset>
+<br><br>
+{% endblock %}
+</body>
+</html>

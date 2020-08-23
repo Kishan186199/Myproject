@@ -1,0 +1,57 @@
+<!doctype html>
+{% extends 'Stu_dashboard.html'%}
+{% load staticfiles %}
+		{% block xy %}
+		<link rel="stylesheet" href="{% static "fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"%}">
+		<link rel="stylesheet" href="{% static "css/Tech_Assignment.css" %}">
+    {% endblock %}
+
+    {% block xyz %}
+    <div class='bottom' style="background-color: lightskyblue;">
+    {% if Assignment %}
+    <br><br><br>
+    <center>
+    <h1> Please submit {{sbj}} Assignment</h1><br>
+      {% for i in Assignment %}
+      <fieldset style="text-align:left; height:relative;width:700px;">
+        <legend  style="color:orangered;"><h2> [{{i.id}}.] {{i.title}} : </h2></legend>
+        <center>  <h3 style="color:navy;">Last date - {{i.submittion_date}}</h3></center><hr width='29%' align='center' color='black'>
+          <h4 style="text-align:center;">{{i.assignment}}</h4>
+          {% if i.assign_img %}
+            <h4 style="text-align:right;color:blue;">Question image :- {{i.assign_img}}</h4>
+						<button style="background-color:navy;"><a href={{i.Notes}} download style='color:white;text-decoration:none;'>Download</a></button>
+          {% endif %}
+          <br>
+      </fieldset>
+    <br>
+      {% endfor %}
+    {% endif %}
+    </center>
+    </div>
+		<div class='top'>
+    <form action="" method="POST" style="background-color: lightskyblue;">
+			{% csrf_token %}
+<br><br>
+  <br>
+		<div class="wrapper">
+			<div class="inner">
+        <div class="KI">
+					{% for message in messages %}
+					<h4 style="color:green;">{{ message }}</h4><br>
+					{% endfor%}
+					<textarea placeholder="Write Questions Here" style="width: 330px;height:370px;" name="assign"></textarea>
+          </div>
+        <div class="image-holder">
+        <br>
+      <br><br>
+          <div class="form-group">
+						<input type="number"  placeholder="Assignment Number" class="form-control" name="assignment_id" required>
+						<input class="form-control" type="file"  value="Select File" name="assignment_img"></input>
+					</div>
+          <div class="sub"><input type="submit" value="Send"/>
+          </div>
+			</div>
+		</div>
+</form>
+</div>
+{% endblock %}

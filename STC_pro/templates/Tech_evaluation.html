@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% extends 'Tech_dashboard.html'%}
+{% load staticfiles %}
+<html>
+<head>
+      {% block xy %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+body{
+  font-family: 'lato' !important; /* !important is used to provide  more weight (importance) than normal*/
+  background-color: white;
+}
+
+/*navbar start*/
+
+@media(min-width:768px) {  /* change the background color for different devices*/
+
+
+body {
+  margin-top: 50px;
+}
+}
+
+#wrapper {
+  padding-left: 0;
+}
+
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+
+#wrapper {
+  padding-left: 225px;
+}
+
+
+.side-nav {
+  position: fixed;
+  top: 30px;
+  left: 225px;
+  width: 225px;
+  margin-left: -225px;
+  border: none;
+  border-radius: 0;
+  overflow-y: auto;
+  background-color: #313131;
+  bottom: 0;
+  overflow-x: hidden;
+  padding-bottom: 40px;
+  margin-top: 20px;
+}
+
+.side-nav>li>a {
+  width: 225px;
+  border-bottom: 1px solid #6C7278;
+  margin-top: 15px;
+}
+}
+
+
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 12px 15px;
+  margin-right: 15px;
+}
+.nav a:hover {
+  border-left: 3px solid white;
+}
+
+
+
+.nav a {
+  color: white !important;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  background-color: transparent !important;
+}
+
+
+    </style>
+{% endblock %}
+</head>
+
+
+
+<body>
+{% block xyz %}
+<div id="wrapper">
+
+    <!-- Navigation -->
+        <!-- Brand and toggle get grouped for better mobile display -->
+
+
+        <!-- Top Menu Items -->
+
+
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <ul class="nav navbar-nav side-nav">
+              {% if students %}
+                {% for i in students %}
+                  <li>
+                      <a  href="/Check_assignment/?{{ sub }} {{i.user_id}}" > {{i.user_id}}</a>
+                  </li>
+                  {% endfor %}
+              {% endif %}
+            </ul>
+        </div>
+        {% block abcd %}
+        {% endblock %}
+
+{% endblock %}
+</body>
+</html>

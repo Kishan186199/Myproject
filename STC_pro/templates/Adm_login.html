@@ -1,0 +1,29 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+  <title>kishan</title>
+  <link rel="stylesheet" href="{% static "css/login_css.css"%}">
+  <style>
+    body{
+      {% load static %}
+   background:url('{% static 'images/water.jpg' %}');
+    }
+  </style>
+</head>
+<body>
+  <div class="login-page">
+  <div class="form">
+    <center><h1 style ="font-size: 36px;font-family: "Roboto", sans-serif;">Admin Login</h1></center>
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <div class="K">
+      <input type="submit" value="LOGIN"/>
+      </div>
+      <p class="message">Not registered? <a href="/Adm_reg/">Create an account</a></p>
+    </form>
+  </div>
+</div>
+</body>
+</html>

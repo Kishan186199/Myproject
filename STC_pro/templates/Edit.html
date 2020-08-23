@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% extends 'Tech_dashboard.html'%}
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Stu_Registration</title>
+    {% block xy %}
+		<link rel="stylesheet" href="{% static "fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"%}">
+		<link rel="stylesheet" href="{% static "css/registration_css.css" %}">
+    {% endblock %}
+	</head>
+
+	<body>
+    {% block xyz %}
+    <form action="" method="POST">
+		{% csrf_token %}
+		<div class="wrapper" style='background-color:lightskyblue';>
+			<div class="inner">
+        <div class="KI">
+
+					<h3>Edit Your Profile</h3>
+					<div class="form-group">
+						<input type="text" value={{fn}} class="form-control" name="f_name">
+						<input type="text" value={{ln}} class="form-control" name="l_name" >
+					</div>
+					<div class="form-wrapper">
+						<input type="number" value={{ uid }} class="form-control" name="U_id" >
+						<i class="zmdi zmdi-account"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="email" value={{em}} class="form-control" name="e_mail" >
+						<i class="zmdi zmdi-email"></i>
+					</div>
+					<div class="form-wrapper">
+						<select name="gen" id="" class="form-control" >
+							<option value="" disabled selected>{{ gen }}</option>
+							<option value="male">Male</option>
+							<option value="femal">Female</option>
+							<option value="other">Other</option>
+						</select>
+						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="password" value={{pas}} class="form-control"name="passw" >
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="password" value={{pas}} class="form-control" name="conf_passw" >
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					{% for message in messages %}
+						<p style="color:red;">{{ message }}</p>
+					{% endfor%}
+          </div>
+        <div class="image-holder">
+          <div class="form-group">
+						<input type="number" value={{con}} class="form-control" name="mobile1" >
+						<input type="number" value={{alcon}} class="form-control" name="mobile2" >
+					</div>
+          <div class="form-wrapper">
+            <input type="text" value="{{add}}" class="form-control" name="dob" >
+            <i class="zmdi zmdi-number"></i>
+          </div>
+          <div class="form-wrapper">
+						<select id="" class="form-control" name="course" >
+							<option value="" disabled selected>{{cou}}</option>
+							<option value="B.Tech">B.Tech</option>
+							<option value="B.Phrma">B.Phrma</option>
+							<option value="MBA">MBA</option>
+						</select>
+						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
+					</div>
+          <div class="form-wrapper">
+						<select id="" class="form-control" name="Branch">
+							<option value="" disabled selected>{{br}}</option>
+							<option value="CSE">CSE</option>
+							<option value="ME">ME</option>
+							<option value="EC">EC</option>
+              <option value="EN">EN</option>
+						</select>
+						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
+					</div>
+          <div class="form-wrapper">
+						<select id="" class="form-control" name="Year">
+							<option value="" disabled selected>{{yr}}</option>
+							<option value="1">1st </option>
+							<option value="2">2nd</option>
+							<option value="3">3rd</option>
+              <option value="4">4th</option>
+						</select>
+						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
+					</div>
+          <div class="form-wrapper">
+            <select id="" class="form-control" name="sem">
+              <option value="" disabled selected>Semester</option>
+              <option value="1">1 </option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 </option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+            <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
+          </div>
+					<div class="sub"><input type="submit" value="Update"/>
+					</div>
+			</div>
+		</div>
+</form>
+{% endblock %}
+	</body>
+</html>
